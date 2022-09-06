@@ -1,0 +1,22 @@
+
+    <div class="status-part3821">
+        <h4>stats</h4> <a href="#"><i class="fa fa-question-circle" aria-hidden="true"> Subjects({{subjectNbr}})</i></a>
+        <i class="fa fa-comment" aria-hidden="true"> Comments({{commentNbr}})</i>
+    </div>
+    
+    <!--               end of Highest points -->
+    <!--        start recent post  -->
+    <div class="recent-post3290">
+        <h4>Recent Subjects</h4>
+        <div *ngFor="let subject of subjects">
+            <div class="post-details021"> <a  [routerLink]="['/subject/',subject.id]">
+                <h5>{{subject.title}}</h5>
+            </a>
+            <p>{{subject.text}}</p> <small
+                style="color: #848991">July 16, 2017</small>
+        </div>
+        <hr>
+        </div>
+
+    </div>
+    <!--       end recent post    -->

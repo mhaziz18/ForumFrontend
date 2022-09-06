@@ -1,0 +1,21 @@
+<div class="cont">
+    <div class="modal-wrap">
+
+        <div class="modal-bodies">
+          <div class="modal-body modal-body-step-1 is-showing">
+            <div class="title">Log In</div>
+            <div class="description">Hello there, Log In</div>
+            <form [formGroup]="login">
+              <input type="email" placeholder="Email" formControlName="email" [ngClass]="{'form-invalid':login.controls['email'].touched && login.controls['email'].errors?.['required'] || invalid,'form-valid':login.controls['email'].touched && !login.controls['email'].errors?.['required']}"/>
+              <input type="password" placeholder="Passeword" formControlName="password" [ngClass]="{'form-invalid':login.controls['password'].touched && login.controls['password'].errors?.['required'] || invalid,'form-valid':login.controls['password'].touched && !login.controls['password'].errors?.['required']}"/>
+              <div class="text-center">
+                <div class="button me-2" (click)="onLoggedin()">LOG IN</div>
+                  <a ><div class="button" routerLink="/register">Create an account</div></a>
+              </div>
+            </form>
+          </div>
+      
+       
+        </div>
+      </div>
+</div>

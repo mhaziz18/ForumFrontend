@@ -1,0 +1,146 @@
+<app-header></app-header>
+<!--======= welcome section on top background=====-->
+<section class="welcome-part-one">
+    <div class="container">
+        <div class="welcome-demop102 text-center">
+            <h2>Welcome to Ask me, Awesome Questions & Answer Template</h2>
+            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.
+                Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque
+                <br> habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae
+                velit in neque dictum blandit
+            </p>
+            <div class="button0239-item">
+                <a>
+                    <button type="button" class="aboutus022" (click)="addSujet()"><i class="fa fa-plus" aria-hidden="true"></i>  Add Subject</button>
+                </a>
+                <a *ngIf="!authService.isloggedIn" routerLink="/register">
+                    <button type="button" class="join92">Join Now</button>
+                </a>
+            </div>
+<!--             <div class="form-style8292">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    <input #input type="text" class="form-control form-control8392"
+                        placeholder="Ask any question and you be sure find your answer ?" > <span
+                        class="input-group-addon"><a>search</a></span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+
+<!-- ======content section/body=====-->
+<section class="main-content920">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="main">
+                    <input id="tab1" type="radio" name="tabs" checked>
+                    <label for="tab1">All Subjects</label>
+                    <input id="tab2" type="radio" name="tabs">
+                    <label for="tab2">My Subjects</label>
+
+
+
+                    <section id="content1">
+                        <!--Recent Question Content Section -->
+                        <div class="question-type2033" *ngFor="let sujet of sujets">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="left-user12923 left-user12923-repeat">
+                                        <a href="#"><img src="{{ sujet.user.image || 'assets/images/images.png'}}" alt="image"> </a> <a href="#"><i
+                                                class="fa fa-check" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="right-description893">
+                                        <div id="que-hedder2983">
+                                            <h3><a [routerLink]="['/subject/',sujet.id]">{{sujet.title}}</a></h3>
+                                        </div>
+                                        <div class="ques-details10018">
+                                            <p>{{sujet.text}}.</p>
+                                        </div>
+                                        <hr>
+                                        <div class="ques-icon-info3293"> <a ><i class="fa fa-star"
+                                                    aria-hidden="true"> {{sujet.totalRating}}</i> </a> <a [routerLink]="['/subject/',sujet.id]"
+                                                ><i class="fa fa-question-circle-o" aria-hidden="true">
+                                                    Comments</i></a> </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="ques-type302">
+                                        <div *ngIf="(authService.isloggedIn && authService.loggedUser.id == sujet.user.id) || authService.loggedUser.role == 'ADMIN'">
+                                            <i class='bx bx-x-circle mr-5' style='color:#222222;font-size:29px;' (click)="deleteSujet(sujet.id)" ></i>
+                                            <i class='bx bx-edit' style='color:#222222;font-size:29px;' (click)="editSujet(sujet.id)"></i>
+                                        </div>
+                                        
+                                        <br>
+                                        <a>
+                                            <button type="button" class="q-type238"><i class="fa fa-comment"
+                                                    aria-hidden="true"> {{sujet.comments.length}} answer</i></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--  End of content-1------>
+
+                    <section id="content2">
+                        <!--Most Response Content Section -->
+                        <div class="question-type2033" *ngFor="let subject of sujets">
+                            <div class="row" *ngIf="subject.user.id == authService.loggedUser.id">
+                                <div class="col-md-1">
+                                    <div class="left-user12923 left-user12923-repeat">
+                                        <a ><img src="{{ subject.user.image || 'assets/images/images.png'}}" alt="image"> </a> <a><i
+                                                class="fa fa-check" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="right-description893">
+                                        <div id="que-hedder2983">
+                                            <h3><a [routerLink]="['/subject/',subject.id]">{{subject.title}}</a></h3>
+                                        </div>
+                                        <div class="ques-details10018">
+                                            <p>{{subject.text}}.</p>
+                                        </div>
+                                        <hr>
+                                        <div class="ques-icon-info3293"> <a><i class="fa fa-star"
+                                                    aria-hidden="true"> {{subject.totalRating}} </i> </a> <a [routerLink]="['/subject/',subject.id]"
+                                                ><i class="fa fa-question-circle-o" aria-hidden="true">
+                                                    Comments</i></a> </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="ques-type302">
+                                        <div *ngIf="authService.isloggedIn && authService.loggedUser.id == subject.user.id">
+                                            <i class='bx bx-x-circle mr-5' style='color:#222222;font-size:29px;' (click)="deleteSujet(subject.id)" ></i>
+                                            <i class='bx bx-edit' style='color:#222222;font-size:29px;' (click)="editSujet(subject.id)"></i>
+                                        </div>
+                                        
+                                        <br>
+                                        <a>
+                                            <button type="button" class="q-type238"><i class="fa fa-comment"
+                                                    aria-hidden="true"> {{subject.comments.length}} answer</i></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!----end of content-2----->
+
+                </div>
+            </div>
+            <!--end of col-md-9 -->
+            <!--strart col-md-3 (side bar)-->
+            <aside class="col-md-3 sidebar97239 mt-4">
+                <app-side-section></app-side-section>
+            </aside>
+            
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

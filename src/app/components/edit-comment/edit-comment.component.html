@@ -1,0 +1,15 @@
+<div class="">
+    <h1 mat-dialog-title >Edit Comment</h1>
+    <div mat-dialog-content>
+        
+        <form>
+            <label class="form-label">Comment:</label>
+            <input type="text"  class="form-control" [(ngModel)]="input" name="comment">
+            <div class="mt-4">
+                
+                <button (click)="editComment()" class="btn btn-primary me-2" mat-dialog-close>Submit</button>
+                <button mat-dialog-close class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

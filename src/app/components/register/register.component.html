@@ -1,0 +1,29 @@
+<div class="cont">
+
+  <div class="modal-wrap">
+
+    <div class="modal-bodies">
+      <div class="modal-body modal-body-step-1 is-showing">
+        <div class="title">Sign Up</div>
+        <div class="description">Hello there, Register Form</div>
+        <form [formGroup]="register">
+          <input type="text" placeholder="Username*" formControlName="fullName" [ngClass]="{'form-invalid':register.controls['fullName'].touched && register.controls['fullName'].errors?.['required'] || invalid,'form-valid':register.controls['fullName'].touched && !register.controls['fullName'].errors?.['required']}"/>
+          <input type="email" placeholder="E-Mail*" formControlName="email" [ngClass]="{'form-invalid':register.controls['email'].touched && register.controls['email'].errors?.['required'] || invalid,'form-valid':register.controls['email'].touched && !register.controls['email'].errors?.['required']}"/>
+          <input type="password" placeholder="Password*" formControlName="password" [ngClass]="{'form-invalid':register.controls['password'].touched && register.controls['password'].errors?.['required'] || invalid,'form-valid':register.controls['password'].touched && !register.controls['password'].errors?.['required']}"/>
+          <input type="password" placeholder="Confirm Password*" formControlName="confirmPassword" [ngClass]="{'form-invalid':register.controls['confirmPassword'].touched && register.controls['confirmPassword'].errors?.['required'] || invalid,'form-valid':register.controls['confirmPassword'].touched && !register.controls['confirmPassword'].errors?.['required']}"/>
+          <div class="col-md-4">
+          </div>
+          <div class="text-center">
+            <div class="button" (click)="onRegister()">Sign Up</div>
+
+          </div>
+          <div class="text-center mt-3">
+            <a href="#" routerLink="/login">have an account? login</a>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

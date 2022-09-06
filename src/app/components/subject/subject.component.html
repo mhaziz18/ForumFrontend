@@ -1,0 +1,132 @@
+<app-header></app-header>
+<section class="header-descriptin329 pt-5">
+    <div class="container">
+        <h3>Subject Details</h3>
+        <ol class="breadcrumb breadcrumb839">
+            <li><a  routerLink="/">Home</a></li>
+        </ol>
+    </div>
+</section>
+<section class="main-content920">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="post-details">
+                    <div class="author-img202l"> <img src="assets/images/images.png" alt="image">
+                        <div class="au-image-overlay text-center"> <a><i class="fa fa-plus-square-o"
+                                    aria-hidden="true"></i></a> </div>
+                    </div> 
+                    <span class="author-deatila04re">
+                        <h3>{{sujet.user?.fullName?? ""}}</h3>
+                    </span>
+
+                    <div class="details-header923">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="post-title-left129">
+                                    <h2>{{sujet.title}}</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="text-align:end">
+                                <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" (rateChange)="rate()" class="star"></ngb-rating>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-details-info1982">
+                        <p>{{sujet.text}}</p>
+                        <hr>
+                        <div class="post-footer29032">
+                            <div class="l-side2023"><a
+                                    ><i class="fa fa-star star2" aria-hidden="true"> {{sujet.totalRating}}</i></a><a><i
+                                        class="fa fa-commenting commenting2" aria-hidden="true"> {{ sujet.comments.length }} answer</i></a> </div>
+                            <!-- <div class="l-rightside39">
+                                <button type="button" class="tolltip-button thumbs-up2" data-toggle="tooltip"
+                                    data-placement="bottom" title="Like"><i class="fa fa-thumbs-o-up "
+                                        aria-hidden="true"></i></button>
+                                <button type="button" class="tolltip-button  thumbs-down2" data-toggle="tooltip"
+                                    data-placement="bottom" title="Dislike"><i class="fa fa-thumbs-o-down"
+                                        aria-hidden="true"></i></button> <span
+                                    class="single-question-vote-result">+22</span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!--                 <div class="share-tags-page-content12092">
+                    <div class="l-share2093"> <i class="fa fa-share" aria-hidden="true"> Share</i> </div>
+                    <div class="R-tags309"> <i class="fa fa-tags" aria-hidden="true"> Wordpress, Question, Developer</i> </div>
+                </div> -->
+                <div class="comment-list12993">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="comments-container">
+                                <ul id="comments-list" class="comments-list">
+
+                                    <li *ngFor="let comment of sujet.comments">
+                                        <div *ngIf="(auth.isloggedIn && auth.loggedUser.id == comment.user.id) || auth.loggedUser.role == 'ADMIN'"
+                                            style="text-align: end">
+                                            <i class='bx bx-x-circle mr-5' style='color:#222222;font-size:29px;'
+                                                (click)="deleteComment(comment.id)"></i>
+                                            <i class='bx bx-edit' style='color:#222222;font-size:29px;'
+                                                (click)="editComment(comment.id)"></i>
+                                        </div>
+                                        <div class="comment-main-level">
+                                            <!-- Avatar -->
+                                            <div class="comment-avatar"><img
+                                                    src="{{comment.user.image || 'assets/images/images.png'}}"></div>
+                                            <!-- Contenedor del Comentario -->
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <div class="row">
+
+                                                        <div class="col-7">
+
+                                                            <h6 class="comment-name"><a>{{comment.user.fullName}}</a>
+                                                            </h6>
+                                                            <span><i class="fa fa-clock-o" aria-hidden="true"> January
+                                                                    15 , 2014
+                                                                    at 10:00 pm</i></span> <i class="fa fa-reply"></i>
+                                                            <i class="fa fa-heart"></i>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="comment-content">{{comment.text}}</div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment289-box">
+                    <h3>Leave A Reply</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="post9320-box">
+                                <input type="text" class="comment-input219882" placeholder="Enter Your Comment" #input>
+                            </div>
+                            <button type="button" class="pos393-submit" (click)="addComment(input.value)">Post Your
+                                Comment</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--                end of col-md-9 -->
+            <!--           strart col-md-3 (side bar)-->
+            <aside class="col-md-3 sidebar97239 mt-4">
+                <app-side-section></app-side-section>
+                <!--       end recent post    -->
+            </aside>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

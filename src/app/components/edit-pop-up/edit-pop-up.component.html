@@ -1,0 +1,16 @@
+<h1 mat-dialog-title >Edit Sujet</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="editForm">
+        <label class="form-label mt-1">Title:</label>
+        <input type="text" placeholder="Title" formControlName="title" class="form-control">
+        <label class="form-label mt-3">Body:</label>
+        <textarea type="text" placeholder="Body" formControlName="body" class="form-control"></textarea> 
+        <div class="me-3 mt-3">
+
+            <button (click)="editSujet()" class="btn btn-primary me-2" mat-dialog-close>Submit</button>
+            <button mat-dialog-close class="btn btn-danger">Cancel</button>
+        </div>   
+    </form>
+</div>
+

@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Edit Profile</h1>
+<div mat-dialog-content>
+
+    <div>
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Picture</div>
+            <div class="card-body text-center">
+                <!-- Profile picture image-->
+                <img  class="img-account-profile rounded-circle mb-2"
+                    src="{{imagePreview || 'http://bootdey.com/img/Content/avatar/avatar1.png'}}" #image >
+                <!-- Profile picture help block-->
+                <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                <!-- Profile picture upload button-->
+                <button class="btn btn-primary" type="button" (click)="openPicker(imageFile)">Upload new image</button>
+
+                <input type="file"name="file" style="display:none" #imageFile (change)="onImagePicked(imageFile,image)">
+            </div>
+        </div>
+        <label class="form-label mt-3">Full Name:</label>
+        <input type="text" placeholder="Title"  class="form-control" [(ngModel)]="fullName">
+
+
+        <div class="mt-4">
+            <button (click)="editProfile()" class="btn btn-primary me-3" mat-dialog-close>Submit</button>
+            <button mat-dialog-close class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+
+
+
+</div>
